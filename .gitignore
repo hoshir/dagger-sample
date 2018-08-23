@@ -3,5 +3,6 @@
 *.iws
 
 .gradle/*
+.idea/*
 build/*
 
