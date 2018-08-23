@@ -4,7 +4,8 @@ public class Main {
 
   public static void main(String[] args) {
 
-    ChatApp app = new ChatApp(new HelloBot());
+    ChatBot chatBot = DaggerChatBot.builder().build();
+    ChatApp app = new ChatApp(chatBot.bot());
 
     app.run();
   }
