@@ -1,4 +1,4 @@
-package com.hoshir.dagger;
+package com.hoshir.dagger.chat;
 
 public class HelloBot implements Bot {
 
