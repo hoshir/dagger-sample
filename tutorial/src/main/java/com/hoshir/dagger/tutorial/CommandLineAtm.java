@@ -8,7 +8,7 @@ public class CommandLineAtm {
     Scanner scanner = new Scanner(System.in);
     CommandRouterFactory commandRouterFactory = DaggerCommandRouterFactory.create();
     CommandRouter router = commandRouterFactory.router();
-    router.route("hello world");
+    System.out.println("");
 
     while (scanner.hasNextLine()) {
       router.route(scanner.nextLine());

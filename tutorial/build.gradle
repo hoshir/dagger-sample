@@ -3,3 +3,7 @@ plugins {
 }
 
 mainClassName="com.hoshir.dagger.tutorial.CommandLineAtm"
+
+run {
+    standardInput = System.in
+}
