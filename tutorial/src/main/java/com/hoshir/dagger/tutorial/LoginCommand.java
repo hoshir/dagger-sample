@@ -6,13 +6,18 @@ import javax.inject.Inject;
 import java.util.List;
 
 public final class LoginCommand implements Command {
-  private Database database;
-  private Outputter outputter;
+  private final Database database;
+  private final Outputter outputter;
+  private final UserCommandsRouter.Factory userCommandsRouterFactory;
 
   @Inject
-  LoginCommand(Database database, Outputter outputter) {
+  LoginCommand(
+      Database database,
+      Outputter outputter,
+      UserCommandsRouter.Factory userCommandsRouterFactory) {
     this.database = database;
     this.outputter = outputter;
+    this.userCommandsRouterFactory = userCommandsRouterFactory;
   }
 
   @Override
@@ -25,6 +30,6 @@ public final class LoginCommand implements Command {
     Account account = database.getAccount(username);
     outputter.output(username + " is logged in with balance: " + account.balance());
 
-    return Result.handled();
+    return Result.enterNestedCommandSet(userCommandsRouterFactory.create(account).router());
   }
 }

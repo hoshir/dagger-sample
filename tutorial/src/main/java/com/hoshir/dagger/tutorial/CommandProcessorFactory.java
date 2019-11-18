@@ -7,9 +7,9 @@ import javax.inject.Singleton;
 @Component(
     modules = {
       HelloWorldCommandModule.class,
+      UserCommandsRouter.InstallationModule.class,
       SystemOutModule.class,
       LoginCommandModule.class,
-      DepositCommandModule.class
     })
 @Singleton
 interface CommandProcessorFactory {

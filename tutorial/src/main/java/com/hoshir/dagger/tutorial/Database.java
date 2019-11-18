@@ -30,6 +30,12 @@ public class Database {
     }
 
     BigDecimal deposit(BigDecimal amount) {
+      balance = balance.add(amount);
+      return balance;
+    }
+
+
+    BigDecimal withdraw(BigDecimal amount) {
       balance = balance.subtract(amount);
       return balance;
     }

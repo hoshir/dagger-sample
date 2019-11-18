@@ -7,23 +7,22 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public final class DepositCommand implements Command {
-  private Database database;
+  private Account account;
   private Outputter outputter;
 
   @Inject
-  DepositCommand(Database database, Outputter outputter) {
-    this.database = database;
+  DepositCommand(Account account, Outputter outputter) {
+    this.account = account;
     this.outputter = outputter;
   }
 
   @Override
   public Result handleInput(List<String> input) {
-    if (input.size() != 2) {
+    if (input.size() != 1) {
       return Result.invalid();
     }
 
-    Account account = database.getAccount(input.get(0));
-    account.deposit(new BigDecimal(input.get(1)));
+    account.deposit(new BigDecimal(input.get(0)));
     outputter.output(account.username() + " now has: " + account.balance());
 
     return Result.handled();
