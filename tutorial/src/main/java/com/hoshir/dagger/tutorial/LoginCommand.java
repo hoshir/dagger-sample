@@ -16,15 +16,15 @@ public final class LoginCommand implements Command {
   }
 
   @Override
-  public Status handleInput(List<String> input) {
+  public Result handleInput(List<String> input) {
     if (input.size() != 1) {
-      return Status.INVALID;
+      return Result.invalid();
     }
     String username = input.get(0);
 
     Account account = database.getAccount(username);
     outputter.output(username + " is logged in with balance: " + account.balance());
 
-    return Status.HANDLED;
+    return Result.handled();
   }
 }

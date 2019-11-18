@@ -12,6 +12,6 @@ import javax.inject.Singleton;
       DepositCommandModule.class
     })
 @Singleton
-interface CommandRouterFactory {
-  CommandRouter router();
+interface CommandProcessorFactory {
+  CommandProcessor processor();
 }

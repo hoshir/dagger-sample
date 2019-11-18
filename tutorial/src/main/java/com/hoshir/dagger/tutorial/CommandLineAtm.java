@@ -6,12 +6,12 @@ public class CommandLineAtm {
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    CommandRouterFactory commandRouterFactory = DaggerCommandRouterFactory.create();
-    CommandRouter router = commandRouterFactory.router();
+    CommandProcessorFactory commandProcessorFactory = DaggerCommandProcessorFactory.create();
+    CommandProcessor router = commandProcessorFactory.processor();
     System.out.println("");
 
     while (scanner.hasNextLine()) {
-      router.route(scanner.nextLine());
+      router.process(scanner.nextLine());
     }
   }
 }
