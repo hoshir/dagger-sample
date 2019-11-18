@@ -9,11 +9,19 @@ import java.util.List;
 public final class WithdrawCommand implements Command {
   private Account account;
   private Outputter outputter;
+  private BigDecimal minimumBalance;
+  private BigDecimal maximumWithdrawal;
 
   @Inject
-  WithdrawCommand(Account account, Outputter outputter) {
+  WithdrawCommand(
+      Account account,
+      Outputter outputter,
+      @MinBalance BigDecimal minimumBalance,
+      @MaxBalance BigDecimal maximumWithdrawal) {
     this.account = account;
     this.outputter = outputter;
+    this.minimumBalance = minimumBalance;
+    this.maximumWithdrawal = maximumWithdrawal;
   }
 
   @Override
@@ -23,8 +31,12 @@ public final class WithdrawCommand implements Command {
     }
 
     BigDecimal amount = new BigDecimal(input.get(0));
+    if (amount.compareTo(maximumWithdrawal) > 0) {
+      return Result.invalid();
+    }
+
     BigDecimal newBalance = account.balance().subtract(amount);
-    if (newBalance.signum() < 0) {
+    if (newBalance.compareTo(minimumBalance) < 0) {
       return Result.invalid();
     } else {
       account.withdraw(amount);

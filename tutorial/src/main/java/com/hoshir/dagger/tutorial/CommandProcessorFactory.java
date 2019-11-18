@@ -10,6 +10,7 @@ import javax.inject.Singleton;
       UserCommandsRouter.InstallationModule.class,
       SystemOutModule.class,
       LoginCommandModule.class,
+      AmountsModule.class
     })
 @Singleton
 interface CommandProcessorFactory {
