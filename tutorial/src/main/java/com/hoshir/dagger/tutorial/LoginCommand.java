@@ -16,11 +16,6 @@ public final class LoginCommand implements Command {
   }
 
   @Override
-  public String key() {
-    return "login";
-  }
-
-  @Override
   public Status handleInput(List<String> input) {
     if (input.size() != 1) {
       return Status.INVALID;
