@@ -4,8 +4,12 @@ import javax.inject.Inject;
 import java.util.List;
 
 public final class HelloWorldCommand implements Command {
+  private Outputter outputter;
+
   @Inject
-  HelloWorldCommand() {}
+  HelloWorldCommand(Outputter outputter) {
+    this.outputter = outputter;
+  }
 
   @Override
   public String key() {
@@ -17,7 +21,8 @@ public final class HelloWorldCommand implements Command {
     if (!input.isEmpty()) {
       return Status.INVALID;
     }
-    System.out.println("world!");
+    outputter.outputs("world!");
+
     return Status.HANDLED;
   }
 }
