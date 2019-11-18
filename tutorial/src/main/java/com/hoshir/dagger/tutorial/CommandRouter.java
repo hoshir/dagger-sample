@@ -4,16 +4,15 @@ import com.hoshir.dagger.tutorial.Command.Status;
 
 import javax.inject.Inject;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 final class CommandRouter {
-  private final Map<String, Command> commands = new HashMap<>();
+  private final Map<String, Command> commands;
 
   @Inject
-  CommandRouter(Command command) {
-    commands.put(command.key(), command);
+  CommandRouter(Map<String, Command> commands) {
+    this.commands = commands;
   }
 
   Status route(String input) {
