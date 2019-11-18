@@ -4,20 +4,24 @@ import com.hoshir.dagger.tutorial.Database.Account;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Optional;
 
 public final class LoginCommand implements Command {
   private final Database database;
   private final Outputter outputter;
-  private final UserCommandsRouter.Factory userCommandsRouterFactory;
+  private final UserCommandsRouter.Factory userCommandsFactory;
+  private final Optional<Account> account;
 
   @Inject
   LoginCommand(
       Database database,
       Outputter outputter,
-      UserCommandsRouter.Factory userCommandsRouterFactory) {
+      UserCommandsRouter.Factory userCommandsFactory,
+      Optional<Account> account) {
     this.database = database;
     this.outputter = outputter;
-    this.userCommandsRouterFactory = userCommandsRouterFactory;
+    this.userCommandsFactory = userCommandsFactory;
+    this.account = account;
   }
 
   @Override
@@ -27,9 +31,20 @@ public final class LoginCommand implements Command {
     }
     String username = input.get(0);
 
-    Account account = database.getAccount(username);
-    outputter.output(username + " is logged in with balance: " + account.balance());
+    if (account.isPresent()) {
+      Result.handled();
+    }
 
-    return Result.enterNestedCommandSet(userCommandsRouterFactory.create(account).router());
+    if (account.isPresent()) {
+      String loggedInUser = account.get().username();
+      outputter.output(loggedInUser + " is already logged in");
+      if (!loggedInUser.equals(username)) {
+        outputter.output("run `logout` first before trying to log in another user");
+      }
+      return Result.handled();
+    } else {
+      UserCommandsRouter userCommands = userCommandsFactory.create(username);
+      return Result.enterNestedCommandSet(userCommands.router());
+    }
   }
 }

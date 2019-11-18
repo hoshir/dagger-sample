@@ -6,13 +6,13 @@ import dagger.Module;
 import dagger.Subcomponent;
 
 @PerSession
-@Subcomponent(modules = UserCommandsModule.class)
+@Subcomponent(modules = {AccountModule.class, AmountsModule.class, UserCommandsModule.class})
 interface UserCommandsRouter {
   CommandRouter router();
 
   @Subcomponent.Factory
   interface Factory {
-    UserCommandsRouter create(@BindsInstance Account account);
+    UserCommandsRouter create(@BindsInstance @Username String username);
   }
 
   @Module(subcomponents = UserCommandsRouter.class)
