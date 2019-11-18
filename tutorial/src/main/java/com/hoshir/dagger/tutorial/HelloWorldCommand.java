@@ -21,7 +21,7 @@ public final class HelloWorldCommand implements Command {
     if (!input.isEmpty()) {
       return Status.INVALID;
     }
-    outputter.outputs("world!");
+    outputter.output("world!");
 
     return Status.HANDLED;
   }
