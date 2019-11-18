@@ -3,22 +3,10 @@ package com.hoshir.dagger.tutorial;
 import dagger.Module;
 import dagger.Provides;
 
-import javax.inject.Qualifier;
-import java.lang.annotation.Retention;
 import java.math.BigDecimal;
 
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-@Qualifier
-@Retention(RUNTIME)
-@interface MinBalance {}
-
-@Qualifier
-@Retention(RUNTIME)
-@interface MaxBalance {}
-
 @Module
-interface AmountsModule {
+abstract class AmountsModule {
   @Provides
   @MinBalance
   static BigDecimal minBalance() {
@@ -26,8 +14,8 @@ interface AmountsModule {
   }
 
   @Provides
-  @MaxBalance
-  static BigDecimal maxBalance() {
+  @MaxWithdrawal
+  static BigDecimal maxWithdrawal() {
     return new BigDecimal(1000);
   }
 }

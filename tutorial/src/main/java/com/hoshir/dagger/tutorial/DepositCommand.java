@@ -9,11 +9,13 @@ import java.util.List;
 public final class DepositCommand implements Command {
   private Account account;
   private Outputter outputter;
+  private WithdrawalLimiter withdrawalLimiter;
 
   @Inject
-  DepositCommand(Account account, Outputter outputter) {
+  DepositCommand(Account account, Outputter outputter, WithdrawalLimiter withdrawalLimiter) {
     this.account = account;
     this.outputter = outputter;
+    this.withdrawalLimiter = withdrawalLimiter;
   }
 
   @Override
@@ -22,8 +24,10 @@ public final class DepositCommand implements Command {
       return Result.invalid();
     }
 
-    account.deposit(new BigDecimal(input.get(0)));
+    BigDecimal amount = new BigDecimal(input.get(0));
+    account.deposit(amount);
     outputter.output(account.username() + " now has: " + account.balance());
+    withdrawalLimiter.recordDeposit(amount);
 
     return Result.handled();
   }
