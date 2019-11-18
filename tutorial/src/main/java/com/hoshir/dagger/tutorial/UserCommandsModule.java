@@ -16,4 +16,9 @@ interface UserCommandsModule {
   @IntoMap
   @StringKey("withdraw")
   abstract Command withdrawCommand(WithdrawCommand command);
+
+  @Binds
+  @IntoMap
+  @StringKey("logout")
+  abstract Command logout(LogoutCommand command);
 }
