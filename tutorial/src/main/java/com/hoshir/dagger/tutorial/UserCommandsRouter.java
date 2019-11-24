@@ -1,6 +1,5 @@
 package com.hoshir.dagger.tutorial;
 
-import com.hoshir.dagger.tutorial.Database.Account;
 import dagger.BindsInstance;
 import dagger.Module;
 import dagger.Subcomponent;
