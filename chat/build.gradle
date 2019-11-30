@@ -2,4 +2,6 @@ plugins {
     id "application"
 }
 
-mainClassName="com.hoshir.dagger.chat.Main"
+application {
+    mainClassName = "com.hoshir.dagger.chat.Main"
+}
