@@ -8,10 +8,9 @@ public enum Roast {
   CITY("City roast"),
   FULL_CITY("Full City roast"),
   FRENCH("French roast"),
-  ITALIAN("Light roast"),
-  ;
+  ITALIAN("Light roast");
 
-  private String name;
+  private final String name;
 
   Roast(String name) {
     this.name = name;
