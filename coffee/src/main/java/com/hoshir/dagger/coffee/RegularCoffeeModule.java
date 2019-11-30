@@ -18,7 +18,11 @@ class RegularCoffeeModule {
   }
 
   @Provides
-  CoffeeBean daterra() {
-    return new Daterra();
+  CoffeeBean coffeeBean() {
+    return ImmutableCoffeeBean.builder()
+        .country("Brazil")
+        .farmer("Daterra")
+        .roast(Coffee.Roast.CITY)
+        .build();
   }
 }

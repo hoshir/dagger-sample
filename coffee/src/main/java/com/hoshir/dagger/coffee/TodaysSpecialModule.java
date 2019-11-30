@@ -18,7 +18,12 @@ class TodaysSpecialModule {
   }
 
   @Provides
-  CoffeeBean yirgacheffe() {
-    return new Yirgacheffe();
+  CoffeeBean coffeeBean() {
+    return ImmutableCoffeeBean.builder()
+        .country("Ethiopia")
+        .farmer("Yirgacheffe")
+        .roast(Coffee.Roast.MEDIUM)
+        .build();
   }
+
 }
