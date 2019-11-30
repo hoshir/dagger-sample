@@ -4,19 +4,19 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 public class CoffeeShop {
-  private Provider<RegularCoffeeModule.RegularCoffeeComponent.Builder> regularProvider;
+  private Provider<RegularCoffeeModule.RegularCoffeeComponent.Builder> regularCoffeeProvider;
   private Provider<TodaysSpecialModule.TodaysSpecialComponent.Builder> todaysSpecialProvider;
 
   @Inject
   public CoffeeShop(
-      Provider<RegularCoffeeModule.RegularCoffeeComponent.Builder> regularProvider,
+      Provider<RegularCoffeeModule.RegularCoffeeComponent.Builder> regularCoffeeProvider,
       Provider<TodaysSpecialModule.TodaysSpecialComponent.Builder> todaysSpecialProvider) {
-    this.regularProvider = regularProvider;
+    this.regularCoffeeProvider = regularCoffeeProvider;
     this.todaysSpecialProvider = todaysSpecialProvider;
   }
 
   public Coffee regular() {
-    return regularProvider.get().build().coffee();
+    return regularCoffeeProvider.get().build().coffee();
   }
 
   public Coffee todaysSpecial() {
