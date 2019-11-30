@@ -2,7 +2,7 @@ package com.hoshir.dagger.subcomponent;
 
 class Daterra implements CoffeeBean {
   @Override
-  public String getCountryName() {
+  public String getCountry() {
     return "Brazil";
   }
 

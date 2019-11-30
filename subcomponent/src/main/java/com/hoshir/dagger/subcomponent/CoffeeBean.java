@@ -2,7 +2,7 @@ package com.hoshir.dagger.subcomponent;
 
 interface CoffeeBean {
 
-  String getCountryName();
+  String getCountry();
 
   String getFarmer();
 
