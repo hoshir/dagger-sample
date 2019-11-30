@@ -4,23 +4,23 @@ import com.hoshir.dagger.coffee.Coffee.Roast;
 
 import javax.inject.Inject;
 
-class Daterra implements CoffeeBean {
+class Yirgacheffe implements CoffeeBean {
   @Inject
-  public Daterra() {
+  public Yirgacheffe() {
   }
 
   @Override
   public String getCountry() {
-    return "Brazil";
+    return "Ethiopia";
   }
 
   @Override
   public String getFarmer() {
-    return "Daterra";
+    return "Yirgacheffe";
   }
 
   @Override
   public Roast getRoast() {
-    return Roast.CITY;
+    return Roast.MEDIUM;
   }
 }

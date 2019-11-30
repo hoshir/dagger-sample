@@ -2,8 +2,12 @@ package com.hoshir.dagger.coffee;
 
 public class Main {
   public static void main(String[] args) {
-    Coffee coffee = new Coffee(new Daterra());
+    CoffeeShop shop = DaggerCoffeeShopModule_CoffeeShopComponent.create().shop();
 
-    System.out.println(coffee.pour());
+    Coffee regular = shop.regular();
+    System.out.println(regular.brew());
+
+    Coffee todaysSpecial = shop.todaysSpecial();
+    System.out.println(todaysSpecial.brew());
   }
 }
