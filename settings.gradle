@@ -10,5 +10,5 @@
 
 include 'chat'
 include 'tutorial'
-include 'subcomponent'
+include 'coffee'
 

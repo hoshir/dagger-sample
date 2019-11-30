@@ -1,7 +1,0 @@
-plugins {
-    id "application"
-}
-
-application {
-    mainClassName = "com.hoshir.dagger.subcomponent.Main"
-}

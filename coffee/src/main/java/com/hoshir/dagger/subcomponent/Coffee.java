@@ -1,4 +1,4 @@
-package com.hoshir.dagger.coffee;
+package com.hoshir.dagger.subcomponent;
 
 public class Coffee {
   private CoffeeBean bean;

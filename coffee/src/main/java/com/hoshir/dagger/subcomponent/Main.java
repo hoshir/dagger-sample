@@ -1,4 +1,4 @@
-package com.hoshir.dagger.coffee;
+package com.hoshir.dagger.subcomponent;
 
 public class Main {
   public static void main(String[] args) {
