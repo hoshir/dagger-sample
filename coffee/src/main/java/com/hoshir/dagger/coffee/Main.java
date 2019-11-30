@@ -7,7 +7,7 @@ public class Main {
     Coffee regular = shop.regular();
     System.out.println(regular.brew());
 
-    Coffee special = shop.todaysSpecial();
-    System.out.println(special.brew());
+    Coffee todaysSpecial = shop.todaysSpecial();
+    System.out.println(todaysSpecial.brew());
   }
 }
